@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome {{logged_in_user.first_name}}!</h1>
+    <h2>{{recipe.name}}:</h2>
+    <p>Posted by:{{recipe.user.first_name}} {{recipe.user.last_name}}</p>
+    <p>Description: {{recipe.description}}</p>
+    <p>Under 30 minutes? {{recipe.under30}}</p>
+    <p>Instructions: {{recipe.instructions}}</p>
+    <p>Date Made: {{recipe.date_made}}</p>
+    <a href="/recipes/new">+Create</a>
+    <a href="/logout">Logout</a>
+    <a href="/recipes">Dashboard</a>
+</body>
+</html>

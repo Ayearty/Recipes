@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome, {{user.first_name}}!</h1>
+    <a href="/recipes/new">Create Recipes</a>
+    <a href="/logout">Logout</a>
+    <br>
+    <p>All posted recipes:</p>
+    <p>{{session['user_id']}}</p>
+    <table>
+        <tr>
+            <th>Description:</th>
+            <th>Creator ID</th>
+            <th>Instructions:</th>
+            <th>Under 30 minutes?</th>
+            <th>Date Made:</th>
+            <th>Actions</th>
+        </tr>
+        {% for recipe in recipes %}
+            <tr>
+                <td>
+                    {{recipe.description}}
+                </td>
+                <td>
+                    {{recipe.creator_id}}
+                </td>
+                <td>
+                    {{recipe.instructions}}
+                </td>
+                <td>
+                    {{recipe.under30}}
+                </td>
+                <td>
+                    {{recipe.date_made}}
+                </td>
+                <td>
+                    {% if user.id == recipe.creator_id %}
+                        <a href="/edit/{{recipe.id}}">Edit| </a>
+                        <a href="/delete/{{recipe.id}}">Delete| </a>
+                    {% endif %}
+                    <a href="/show/recipe/{{recipe.id}}">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>

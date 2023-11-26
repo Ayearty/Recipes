@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/recipes">Back to Recipes</a>
+    <a href="/logout">Logout</a>
+    <h1>Add a New Recipe</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color:red;">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/create_recipe" method="post">
+        <input type="hidden" name="creator_id" value="{{user.id}}">
+        <label for='name'>Name:</label>
+        <input type='text' name='name'>
+        <br>
+        <label for='description'>Description:</label>
+        <br>
+        <textarea rows="3" cols="20" name='description'>Describe it Here...</textarea>
+        <br>
+        <label for='instructions'>Instructions:</label>
+        <br>
+        <textarea rows="3" cols="20" name='instructions'>Be Specific...</textarea>
+        <br>
+        <label for='date_made'>Date Cooked/Made:</label>
+        <input type='date' name='date_made'>
+        <br>
+        <label for='under30'>Under 30 Minutes?</label>
+        <br>
+        <input type='radio' name='under30' value="yes">
+        <label for="under30">Yes</label>
+        <input type="radio" name="under30" value="no">
+        <label for="under30">No</label>
+        <br>
+        <button>Submit</button>
+        </form>
+</body>
+</html>
